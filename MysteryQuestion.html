@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Have a Question</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            text-align: center;
+            background-color: #b15e5e; /* Light blue background */
+            font-family: 'Baloo 2', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            margin-top: 100px;
+            z-index: 10;
+            position: relative;
+            
+        }
+
+        .envelope-wrapper {
+            cursor: pointer;
+        }
+        .response-buttons {
+            display: none;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .question-box {
+            background: #ffffff;
+            padding: 0px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            border: 8px solid #ff4d4d; /* Thick Red Border for Gift Look */
+            margin-bottom: 1000px;
+        }
+
+        /* 🎀 Ribbon */
+        .ribbon {
+            width: 80px; /* Adjust width */
+            height: 20px; /* Smaller height */
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            position: absolute;
+            top: -10px; /* Move slightly up */
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px; /* Smooth edges */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 📌 Centering the Button */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            position: fixed;  /* Fix position relative to the viewport */
+            bottom: 500px;     /* Stick to the bottom with some spacing */
+            left: 50%;        /* Center horizontally */
+            transform: translateX(-50%); /* Perfect centering */
+            width: 100%;       /* Ensure full-width container */
+        }
+
+
+        .message {
+        font-size: 25px;
+        color: #0f37ec;
+        margin-bottom: 20px;
+        font-family: 'Great Vibes', cursive;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(15, 55, 236, 0.4);
+        }
+
+               /* 📝 Question Text */
+       /* 📝 Question Text */
+       .question {
+            font-size: 15px;
+            color: #000000;
+            margin-bottom: 10px;
+            font-family: 'Great Vibes', cursive;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(15, 55, 236, 0.3);
+        }
+        /* ❤️ Click Me Button */
+        .heart-button {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+.heart-button:hover {
+    background: linear-gradient(45deg, #ff5e78, #ff89a4);
+    transform: scale(1.1);
+}
+        .message {
+            font-size: 28px;
+            color: #0f37ec;
+            margin-top: 20px;
+            display: none;
+            font-weight: bold;
+        }
+        .response-buttons {
+            display: none;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        /* Romantic Yes and No Buttons */
+.yes-button, .no-button {
+    font-family: 'Great Vibes', cursive; /* Romantic font */
+    font-size: 24px;
+    padding: 15px 45px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.yes-button {
+    background: linear-gradient(45deg, #0666f5, #ff99cc); /* Romantic pink gradient */
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Soft glowing effect */
+}
+
+.no-button {
+    background: linear-gradient(45deg, #ff4d4d, #ff9999); /* Soft red gradient */
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Soft glowing effect */
+}
+
+.yes-button:hover, .no-button:hover {
+    transform: scale(1.1) rotate(2deg); /* Slight scale and rotation for romance */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.yes-button:active, .no-button:active {
+    transform: scale(1.1); /* Button shrink effect when clicked */
+}
+
+.response-buttons {
+    display: none;
+    justify-content: center;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* Fade-in animation for the buttons */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+        /* Falling hearts */
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            animation: fall linear infinite; /* Looping animation */
+            color: #1e90ff; /* Blue color */
+            text-shadow: 0 0 10px #00bfff, 0 0 20px #1e90ff, 0 0 30px #00bfff, 0 0 40px #1e90ff; /* Shiny effect */
+}
+
+         /* GIF display */
+         .gif-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .gif-container img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .gif-containerdummy {
+            display: block;
+            margin-top: 20px;
+        }
+
+        .gif-containerdummy img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100px) translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            margin: 10% auto;
+            width: 60%;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .modal img {
+            width: 250px;
+            margin-top: 20px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Falling hearts */
+        .heart {
+            position: absolute;
+            top: -10px;
+            font-size: 20px;
+            color: #007bff;
+
+            animation: fall 5s linear infinite;
+        }   
+        @keyframes fall {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(50vh) rotate(180deg); opacity: 0.8; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="question-box">
+            <div class="ribbon"></div>
+            <p class="question">Dai</p>
+            <p class="question">Can anh ask em a question?</p>
+        </div>
+
+               <!-- Placeholder Dummy GIF initially visible -->
+        <div class="gif-containerdummy" id="gif-containerdummy">
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2VzYnlpaGpubDh0MmFsNXhqMHVuZHF6ZWdjaDE3c21xMzlodGt5byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XHVmD4RyXgSjd8aUMb/giphy.gif" alt="Placeholder GIF" width="300">
+        </div>
+
+        <div class="button-container">
+            <button class="heart-button" onclick="showQuestion()">Ready to see the question</button>
+        </div>
+
+        <!-- <div class="gif-container" id="gif-container">
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGZvZG11dzBzdXU0NTg4eWh3bXBkbm84dXh5aGxsZHRmcnVrbDJxMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AXhbp00D9dxF9BCqpn/giphy.gif" alt="Be My Valentine GIF">
+        </div> -->
+
+
+        
+
+        <div class="envelope-wrapper" id="envelope">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Dear Dai,</strong>
+                        <p>Em có muốn trở thành valentine của đời anh không? 💙</p>
+                        <p class="right-align">Rick</p>
+                        </div>
+                        </div>
+                        </div>
+                    </div>  
+                    <div class="response-buttons">
+                        <button class="yes-button" onclick="submitYes()">Yes</button>
+                        <button class="no-button" onclick="moveNoButton(this)">No</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+    <!-- Falling Hearts -->
+    <div id="hearts-container"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>💙 Cảm ơn, Anh không thể đợi để được gặp em on Valentine's Day. Pipi 💙</h2>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWgwN2htMWd5a2NtaTh1MTl3dHB1bHB6NTZwc3h3MnNvMWdxenl3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jFTlXaFaOJ6oa8NCDv/giphy.gif" alt="Cute Valentine">
+        </div>
+    </div>
+
+    <script>
+
+
+    const envelope = document.getElementById('envelope');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+            document.querySelector(".response-buttons").style.display = "flex";
+            startFallingHearts();
+        });     
+
+
+
+    function showQuestion() {
+            // Hide the dummy GIF and show the real one
+            document.getElementById('gif-containerdummy').style.display = 'none';  // Hide the dummy GIF
+            // Hide the "Click Me" button and show the message and response buttons
+            document.querySelector(".heart-button").style.display = "none";
+            document.querySelector(".message").style.display = "block";
+            document.querySelector(".response-buttons").style.display = "flex";
+            startFallingHearts();
+        }
+
+        
+        function startFallingHearts() {
+    const heartsContainer = document.getElementById('hearts-container');
+    const numberOfHearts = 10; // Number of hearts to fall every interval
+
+    // Loop to add hearts at intervals
+    setInterval(() => {
+        for (let i = 0; i < numberOfHearts; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💙';
+            
+            // Randomize starting position
+            heart.style.left = `${Math.random() * window.innerWidth}px`; // Random X position
+            heart.style.animationDuration = `${Math.random() * 16 + 6}s`; // Random fall time (between 2s and 5s)
+            
+            // Add the heart to the container
+            heartsContainer.appendChild(heart);
+            
+            // Remove the heart after animation is done (to clean up)
+            setTimeout(() => {
+                heart.remove();
+            }, parseFloat(heart.style.animationDuration) * 1000);
+        }
+    }, 3000); // Creates 10 hearts every 200ms, adjust as needed
+}
+
+        function submitYes() {
+            fetch("https://formspree.io/f/myzkjllj", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ response: "Yes" })
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById("modal").style.display = "block";
+                } else {
+                    alert("Oops! Something went wrong.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Could not submit the response.");
+            });
+        }
+
+        function moveNoButton(button) {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            button.style.position = "absolute";
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function startHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "💙";
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                document.getElementById("hearts-container").appendChild(heart);
+            }
+        }
+    </script>
+
+</body>
+</html>
