@@ -394,12 +394,20 @@
         }
 
         function moveNoButton(button) {
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 100);
-            button.style.position = "absolute";
-            button.style.left = `${x}px`;
-            button.style.top = `${y}px`;
-        }
+    let buttonWidth = button.offsetWidth;
+    let buttonHeight = button.offsetHeight;
+
+    let maxX = window.innerWidth - buttonWidth; // Ensure it stays within width
+    let minY = window.innerHeight * 0.6; // Start from 60% down
+    let maxY = window.innerHeight * 0.9 - buttonHeight; // Ensure it stays within bottom 40%
+
+    let x = Math.random() * maxX;
+    let y = Math.random() * (maxY - minY) + minY;
+
+    button.style.position = "absolute";
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
+}
 
         function closeModal() {
             document.getElementById("modal").style.display = "none";
