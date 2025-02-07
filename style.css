@@ -1,12 +1,12 @@
-:root{
-  --primary: #fff;
-  --bg-color: rgb(5, 53, 61);
-  --bg-envelope-color: #f5edd1;
-  --envelope-tab: #ecdeb8;
-  --envelope-cover: #e6cfa7;
-  --shadow-color: rgba(0, 0, 0, 0.2);
-  --txt-color: #444;
-  --heart-color: rgb(252, 8, 231);
+:root {
+  --primary: #e0f7fa; /* Light Cyan */
+  --bg-color: #1e3a5f; /* Deep Blue */
+  --bg-envelope-color: #b3e5fc; /* Light Blue */
+  --envelope-tab: #81d4fa; /* Sky Blue */
+  --envelope-cover: #4fc3f7; /* Bright Blue */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --txt-color: #000000; /* Deep Indigo */
+  --heart-color: #ff4081; /* Neon Pink */
 }
 body{
   margin: 0;
