@@ -16,6 +16,7 @@ body{
   display: center;
   align-items: center;
   justify-content: center;
+  margin-top: -100px;
 }
 .container {
   height: 100vh;
